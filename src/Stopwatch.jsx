@@ -34,23 +34,21 @@ const Stopwatch = () => {
   const formateTime = () => {
     // 1 = 1000 ms => 1234  1234 % 1000 = 234 / 10 = 23.4
     // 1 = 1234s => 1234 / 60 = 20.5666
-    const ms = Math.floor((time % 1000) / 10)
-      .toString()
-      .padStart(2, "0"); // Milliseconds
+    // const ms = Math.floor((time % 1000) / 10)
+    //   .toString()
+    //   .padStart(2, "0"); // Milliseconds
     const s = Math.floor((time / 1000) % 60)
       .toString()
       .padStart(2, "0"); // Seconds
-    const m = Math.floor((time / (1000 * 60)) % 60)
-      .toString()
-      .padStart(2, "0"); // Minutes
+    const m = Math.floor((time / (1000 * 60)) % 60); // Minutes
     // const h = Math.floor(time / (1000 * 60 * 60)); // Hours
-    return `${m}:${s}:${ms}`;
+    return `${m}:${s}`;
   };
 
   return (
     <>
       <h1>Stopwatch</h1>
-      <h2>{formateTime()}</h2>
+      <p>Time: {formateTime()}</p>
       <div className="controls">
         <button onClick={() => {isRunning ? Stop() : Start()}}>{isRunning ? "Stop" : "Start"}</button>
         {/* <button onClick={Stop}>Stop</button> */}
